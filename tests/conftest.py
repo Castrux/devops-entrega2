@@ -5,6 +5,9 @@ import pytest
 # Configuración de variables de entorno para pruebas
 os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 os.environ["JWT_SECRET_KEY"] = "test-secret-key-with-at-least-32-bytes"
+# Evita que las pruebas lean Secrets Manager si el entorno (p. ej. CodeBuild) define los ARN
+os.environ.pop("DB_SECRET_ARN", None)
+os.environ.pop("JWT_SECRET_ARN", None)
 
 from app.app import app
 from app.models.models import db
