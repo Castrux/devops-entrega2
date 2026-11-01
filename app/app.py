@@ -123,7 +123,7 @@ class BlacklistByEmail(Resource):
         return {
             "blacklisted": record is not None,
             "blocked_reason": record.blocked_reason if record else None,
-        }, 200
+        }, 201
 
 
 # Registra las rutas REST del microservicio.
